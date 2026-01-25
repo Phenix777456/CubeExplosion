@@ -4,10 +4,12 @@ using Unity.VisualScripting;
 
 public class InputReader : MonoBehaviour
 {
+    private const KeyCode PressedButton = KeyCode.Mouse1;
     public event Action ButtonIsPressed;
 
-    private void OnMouseDown()
+    private void Update()
     {
-        ButtonIsPressed?.Invoke();
+        if (Input.GetKeyDown(PressedButton))
+            ButtonIsPressed?.Invoke();
     }
 }

@@ -5,22 +5,22 @@ public class BurstEffect : MonoBehaviour
 {
     [SerializeField] private float _explosionRadius;
     [SerializeField] private float _explosionForce;
-    [SerializeField] private InputReader _inputReader;
+    [SerializeField] private Handler _handler;
 
     private void OnEnable()
     {
-        _inputReader.ButtonIsPressed += Explode;
+        _handler.OnExplodeRequested += Explode;
     }
 
     private void OnDisable()
     {
-        _inputReader.ButtonIsPressed -= Explode;
+        _handler.OnExplodeRequested -= Explode;
     }
 
-    private void Explode()
+    private void Explode(Vector3 HitPoint)
     {
         foreach (Rigidbody ExploadedObject in GetExploadableObjects())
-            ExploadedObject.AddExplosionForce(_explosionForce, transform.position, _explosionRadius);
+            ExploadedObject.AddExplosionForce(_explosionForce, HitPoint, _explosionRadius);
     }
 
     private List<Rigidbody> GetExploadableObjects()

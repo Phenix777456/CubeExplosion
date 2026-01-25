@@ -1,33 +1,38 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private InputReader _inputReader;
-    [SerializeField] private GameObjectSettings _gameObject;
-    //[SerializeField] private GameObjectSettings settings;
-    public float _chanceOfDouble => _gameObject.ChanceOfDouble;
+    [SerializeField] private Handler _handler;
+    [SerializeField] private GameObjectSettings _settings;
+
+    public event Action OnDoubled; 
 
     private void OnEnable()
     {
-        _inputReader.ButtonIsPressed += Spawn;
+        _handler.OnSpawnRequested += Spawn;
     }
 
     private void OnDisable()
     {
-        _inputReader.ButtonIsPressed -= Spawn;
+        _handler.OnSpawnRequested -= Spawn;
     }
 
-    private void Spawn()
-    {
-        float Randomiser = Random.Range(0,100);
+    private void Spawn(GameObject ClickedObject, Vector3 HitPoint)
+    {      
+        ClickedObject.transform.localScale *= 0.5f;
 
-        if (_gameObject != null && _chanceOfDouble >= Randomiser)
+        OnDoubled?.Invoke();
+
+        bool ChanceToDooble = _settings.FinalChance;
+
+        if (ClickedObject != null && ChanceToDooble == true)
         {
-            Instantiate(_gameObject, transform.position, Quaternion.identity);
-            Instantiate(_gameObject, transform.position, Quaternion.identity);
-            
+            Instantiate(ClickedObject, HitPoint, Quaternion.identity);
+            Instantiate(ClickedObject, HitPoint, Quaternion.identity);    
         }
 
-        Destroy(gameObject);
+        Destroy(ClickedObject);
     }
 }

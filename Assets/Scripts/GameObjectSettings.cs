@@ -3,24 +3,26 @@ using UnityEngine;
 
 public class GameObjectSettings : MonoBehaviour
 {
-    [SerializeField] private InputReader _inputReader;
-    private float _chanceOfDouble = 100;
+    public bool FinalChance { get; private set; }
 
-    public float ChanceOfDouble => _chanceOfDouble;
+    private float ChanceToDouble = 100f;
+
+    [SerializeField] private Spawner _spawner;
 
     private void OnEnable()
     {
-        _inputReader.ButtonIsPressed += ChengeSize;
+        _spawner.OnDoubled += CalculateChance;
     }
 
     private void OnDisable()
     {
-        _inputReader.ButtonIsPressed -= ChengeSize;
+        _spawner.OnDoubled -= CalculateChance;
     }
 
-    private void ChengeSize()
+    private void CalculateChance()
     {
-        transform.localScale *= 0.5f;
-        _chanceOfDouble /= 2;
+        float RandomInt = UnityEngine.Random.Range(1, 100f);
+        FinalChance = RandomInt <= ChanceToDouble;
+        ChanceToDouble /= 2f;
     }
 }
