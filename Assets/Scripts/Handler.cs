@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
 
@@ -8,6 +10,9 @@ public class Handler : MonoBehaviour
     [SerializeField] private Exploder _burstEffect;
     [SerializeField] private Spawner _spawner;
 
+    private int _maxRandomInt = 100;
+    private int _minRandomInt = 0;
+    
     private void OnEnable()
     {
         _rayCast.RaycastHit += OnProcessObject;
@@ -18,22 +23,21 @@ public class Handler : MonoBehaviour
         _rayCast.RaycastHit -= OnProcessObject;
     }
 
-    private void OnProcessObject(Cube ClickedObject, Vector3 HitPoint)
+    private void OnProcessObject(Cube clickedObject, Vector3 hitPoint)
     {
-
-        if (ClickedObject == null)
+        if (clickedObject == null)
             return;
 
-        float random = UnityEngine.Random.Range(0f, 100f);
+        float random = UnityEngine.Random.Range(_minRandomInt, _maxRandomInt);
 
-        bool isDoubled = (random < ClickedObject.ChanceToDouble);
+        bool isDoubled = (random < clickedObject.ChanceToDouble);
 
         if (isDoubled)
         {
-            _spawner.Spawn(ClickedObject, HitPoint);
-            _burstEffect.Explode(HitPoint);
+            _spawner.Spawn(clickedObject, hitPoint);
+            _burstEffect.Explode(hitPoint, _spawner.ReturnBurstedCubes());
         }
 
-        Destroy(ClickedObject.gameObject);
+        Destroy(clickedObject.gameObject);
     }
 }

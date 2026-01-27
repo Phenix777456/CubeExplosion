@@ -416,6 +416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba64b4f1851777c42970acf2fe57a248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameObjectSettings
+  ChanceToDouble: 100
 --- !u!54 &460572414
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -652,6 +653,7 @@ GameObject:
   - component: {fileID: 1302275131}
   - component: {fileID: 1302275130}
   - component: {fileID: 1302275129}
+  - component: {fileID: 1302275135}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -671,6 +673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d142f19a65114784c92c4e9cb59e4f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
+  _colorChanger: {fileID: 1302275135}
 --- !u!114 &1302275130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,8 +728,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a2b22f2840f5c44a60cee9e5283446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BurstEffect
-  _explosionRadius: 5
-  _explosionForce: 500
+  _explosionRadius: 50
+  _explosionForce: 800
 --- !u!4 &1302275134
 Transform:
   m_ObjectHideFlags: 0
@@ -742,6 +745,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1302275135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302275128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b208245ad71bac7408d0fde3e665ec96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ColorChanger
 --- !u!1 &1749796862
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,6 +843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba64b4f1851777c42970acf2fe57a248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameObjectSettings
+  ChanceToDouble: 100
 --- !u!54 &1764807270
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -981,6 +997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba64b4f1851777c42970acf2fe57a248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameObjectSettings
+  ChanceToDouble: 100
 --- !u!54 &2046798526
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1254,6 +1271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba64b4f1851777c42970acf2fe57a248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameObjectSettings
+  ChanceToDouble: 100
 --- !u!1 &2051858290
 GameObject:
   m_ObjectHideFlags: 0
