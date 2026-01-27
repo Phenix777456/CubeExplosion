@@ -12,15 +12,15 @@ public class Raycaster : MonoBehaviour
 
     private void OnEnable()
     {
-        _inputReader.ButtonIsPressed += RaycastFromMouse;
+        _inputReader.ButtonIsPressed += OnRaycastFromMouse;
     }
 
     private void OnDisable()
     {
-        _inputReader.ButtonIsPressed -= RaycastFromMouse;
+        _inputReader.ButtonIsPressed -= OnRaycastFromMouse;
     }
 
-    private void RaycastFromMouse()
+    private void OnRaycastFromMouse()
     {
         _ray = _camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
