@@ -4,29 +4,36 @@ using UnityEngine;
 
 public class Handler : MonoBehaviour
 {
-    [SerializeField] private RayCast _rayCast;
-    [SerializeField] private BurstEffect _burstEffect;
+    [SerializeField] private Raycaster _rayCast;
+    [SerializeField] private Exploder _burstEffect;
     [SerializeField] private Spawner _spawner;
-
-    public event Action<GameObject, Vector3> OnSpawnRequested; 
-    public event Action<Vector3>  OnExplodeRequested;
 
     private void OnEnable()
     {
-        _rayCast.OnRaycastHit += ProcessObject;
+        _rayCast.RaycastHit += OnProcessObject;
     }
 
     private void OnDisable()
     {
-        _rayCast.OnRaycastHit -= ProcessObject;
+        _rayCast.RaycastHit -= OnProcessObject;
     }
 
-    private void ProcessObject(GameObject ClickedObject, Vector3 HitPoint)
+    private void OnProcessObject(Cube ClickedObject, Vector3 HitPoint)
     {
-        if (ClickedObject.GetComponent<GameObjectSettings>() == null) 
-            return;  
 
-        OnSpawnRequested?.Invoke(ClickedObject, HitPoint);
-        OnExplodeRequested?.Invoke(HitPoint);
+        if (ClickedObject == null)
+            return;
+
+        float random = UnityEngine.Random.Range(0f, 100f);
+
+        bool isDoubled = (random < ClickedObject.ChanceToDouble);
+
+        if (isDoubled)
+        {
+            _spawner.Spawn(ClickedObject, HitPoint);
+            _burstEffect.Explode(HitPoint);
+        }
+
+        Destroy(ClickedObject.gameObject);
     }
 }

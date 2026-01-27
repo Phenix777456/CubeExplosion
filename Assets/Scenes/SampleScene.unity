@@ -416,7 +416,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba64b4f1851777c42970acf2fe57a248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameObjectSettings
-  _spawner: {fileID: 1302275129}
 --- !u!54 &460572414
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -537,6 +536,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &507023114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 507023116}
+  - component: {fileID: 507023115}
+  m_Layer: 0
+  m_Name: GameObject (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &507023115
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507023114}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0, y: 30, z: 50}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &507023116
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507023114}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 162.6, y: 1.37462, z: 152.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,8 +671,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d142f19a65114784c92c4e9cb59e4f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
-  _handler: {fileID: 1302275132}
-  _settings: {fileID: 2051781595}
 --- !u!114 &1302275130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,9 +725,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a2b22f2840f5c44a60cee9e5283446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BurstEffect
-  _explosionRadius: 3
-  _explosionForce: 1000
-  _handler: {fileID: 1302275132}
+  _explosionRadius: 5
+  _explosionForce: 500
 --- !u!4 &1302275134
 Transform:
   m_ObjectHideFlags: 0
@@ -688,6 +737,59 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 148.16393, y: 5.92737, z: 131.40001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1749796862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1749796864}
+  - component: {fileID: 1749796863}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1749796863
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749796862}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0, y: 30, z: 50}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1749796864
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749796862}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 127, y: 1.37462, z: 152.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -726,7 +828,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba64b4f1851777c42970acf2fe57a248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameObjectSettings
-  _spawner: {fileID: 1302275129}
 --- !u!54 &1764807270
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -880,7 +981,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba64b4f1851777c42970acf2fe57a248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameObjectSettings
-  _spawner: {fileID: 1302275129}
 --- !u!54 &2046798526
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1154,7 +1254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba64b4f1851777c42970acf2fe57a248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameObjectSettings
-  _spawner: {fileID: 1302275129}
 --- !u!1 &2051858290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,3 +1360,5 @@ SceneRoots:
   - {fileID: 460572418}
   - {fileID: 1764807274}
   - {fileID: 1302275134}
+  - {fileID: 1749796864}
+  - {fileID: 507023116}

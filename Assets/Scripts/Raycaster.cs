@@ -1,27 +1,26 @@
 using System;
 using UnityEngine;
 
-public class RayCast : MonoBehaviour
+public class Raycaster : MonoBehaviour
 {
     [SerializeField] private Ray _ray;
     [SerializeField] private Camera _camera;
     [SerializeField] private float _maxDistance = 20;
     [SerializeField] private InputReader _inputReader;
 
-    public event Action<GameObject, Vector3> OnRaycastHit;
+    public event Action<Cube, Vector3> RaycastHit;
 
     private void OnEnable()
     {
-        _inputReader.ButtonIsPressed += GetObject;
+        _inputReader.ButtonIsPressed += RaycastFromMouse;
     }
 
     private void OnDisable()
     {
-        _inputReader.ButtonIsPressed -= GetObject;
+        _inputReader.ButtonIsPressed -= RaycastFromMouse;
     }
 
-
-    private void GetObject()
+    private void RaycastFromMouse()
     {
         _ray = _camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -30,7 +29,11 @@ public class RayCast : MonoBehaviour
         if (Physics.Raycast(_ray, out hit, Mathf.Infinity))
         {
             GameObject objectHit = hit.collider.gameObject;
-            OnRaycastHit?.Invoke(objectHit, hit.point);
+
+            if (objectHit.TryGetComponent(out Cube cube))
+            {
+                RaycastHit?.Invoke(cube, hit.point);
+            }
         }
     }
 }

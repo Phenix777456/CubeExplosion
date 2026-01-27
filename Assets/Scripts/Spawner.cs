@@ -4,35 +4,20 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private Handler _handler;
-    [SerializeField] private GameObjectSettings _settings;
-
-    public event Action OnDoubled; 
-
-    private void OnEnable()
-    {
-        _handler.OnSpawnRequested += Spawn;
-    }
-
-    private void OnDisable()
-    {
-        _handler.OnSpawnRequested -= Spawn;
-    }
-
-    private void Spawn(GameObject ClickedObject, Vector3 HitPoint)
+    public void Spawn(Cube ClickedObject, Vector3 HitPoint)
     {      
-        ClickedObject.transform.localScale *= 0.5f;
+        int random = UnityEngine.Random.Range(2, 7);
 
-        OnDoubled?.Invoke();
-
-        bool ChanceToDooble = _settings.FinalChance;
-
-        if (ClickedObject != null && ChanceToDooble == true)
+        if (ClickedObject != null)
         {
-            Instantiate(ClickedObject, HitPoint, Quaternion.identity);
-            Instantiate(ClickedObject, HitPoint, Quaternion.identity);    
-        }
+            float cubeChance = ClickedObject.ChanceToDouble / 2;
 
-        Destroy(ClickedObject);
+            for (int i = 0; i < random; i++ )
+            {
+                Cube cube = Instantiate(ClickedObject, HitPoint, Quaternion.identity);
+                cube.transform.localScale *= 0.5f;
+                cube.SetChance(cubeChance);
+            }
+        }
     }
 }

@@ -12,4 +12,4 @@ public class InputReader : MonoBehaviour
         if (Input.GetKeyDown(PressedButton))
             ButtonIsPressed?.Invoke();
     }
-}
+}   
