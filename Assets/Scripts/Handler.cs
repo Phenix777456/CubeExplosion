@@ -30,12 +30,12 @@ public class Handler : MonoBehaviour
 
         float random = UnityEngine.Random.Range(_minRandomInt, _maxRandomInt);
 
-        bool isDoubled = (random < clickedObject.ChanceToDouble);
+        bool isDoubled = (random < clickedObject.ReturnChance());
 
         if (isDoubled)
         {
             _spawner.Spawn(clickedObject, hitPoint);
-            _burstEffect.Explode(hitPoint, _spawner.ReturnBurstedCubes());
+            _burstEffect.Explode(hitPoint, clickedObject.ReturnForce()  );
         }
 
         Destroy(clickedObject.gameObject);

@@ -3,10 +3,26 @@ using UnityEngine;
 
 public class Cube : MonoBehaviour
 {
-    public float ChanceToDouble = 100f;
+    [SerializeField] private float ChanceToDouble = 100f;
+    [SerializeField] private float ForceOfExplosion = 500f;
 
-    public void SetChance(float chance)
+    public void DecreaceChance()
     {
-        ChanceToDouble = chance;
+        ChanceToDouble /= 2;
+    }
+
+    public void IncreaceForce()
+    {
+        ForceOfExplosion *= 2;
+    }
+
+    public float ReturnChance()
+    {
+        return ChanceToDouble;
+    }
+
+    public float ReturnForce()
+    {
+        return ForceOfExplosion;
     }
 }
